@@ -22,9 +22,6 @@ warning () {
 
 status "Create GitHub release"
 
-# Make it always pre-release for now.
-IS_PRE_RELEASE=true
-
 CURRENTBRANCH=`git rev-parse --abbrev-ref HEAD`
 
 status "Reading the current version from wpcomsh.php"
@@ -36,16 +33,11 @@ status "Making the build artifact"
 
 status "Creating the release and attaching the build artifact"
 BRANCH="build/${VERSION}"
-ZIP_FILE="build/wpcomsh.${VERSION}.zip"
+ZIP_FILE="build/build.${VERSION}.zip"
 git checkout -b $BRANCH
-if [ $IS_PRE_RELEASE = true ]; then
-	hub release create -m $VERSION -m "Release of version $VERSION. See README.md for details." -t $BRANCH --prerelease "v${VERSION}" --attach "${ZIP_FILE}"
-else
-	hub release create -m $VERSION -m "Release of version $VERSION. See README.md for details." -t $BRANCH "v${VERSION}" --attach "${ZIP_FILE}"
-fi
-git checkout $CURRENTBRANCH
-git branch -D $BRANCH
-git push origin --delete $BRANCH
+hub release create -m $VERSION -m "Release of version $VERSION. See README.md for details." "v${VERSION}" --attach "${ZIP_FILE}"
 
-success "GitHub release complete.
+git checkout $CURRENTBRANCH
+
+success "GitHub release complete."
 
