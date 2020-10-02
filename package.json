@@ -1,0 +1,19 @@
+{
+  "name": "deploy-to-gh-releases",
+  "version": "1.0.0",
+  "description": "Testing a script to deploy to GH releases",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becdetat/deploy-to-gh-releases.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/becdetat/deploy-to-gh-releases/issues"
+  },
+  "homepage": "https://github.com/becdetat/deploy-to-gh-releases#readme"
+}
