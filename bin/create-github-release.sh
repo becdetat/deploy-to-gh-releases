@@ -31,9 +31,16 @@ echo "Version that will be built and released is ${VERSION}"
 status "Making the build artifact"
 ./make-build.sh
 
+ZIP_FILE="build/build.${VERSION}.zip"
+
+if [ ! -r $ZIP_FILE ]
+then
+	error "The build artifact could not be found at ${ZIP_FILE}"
+	exit 1
+fi
+
 status "Creating the release and attaching the build artifact"
 BRANCH="build/${VERSION}"
-ZIP_FILE="build/build.${VERSION}.zip"
 git checkout -b $BRANCH
 hub release create -m $VERSION -m "Release of version $VERSION. See README.md for details." "v${VERSION}" --attach "${ZIP_FILE}"
 

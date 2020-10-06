@@ -1,6 +1,6 @@
 {
   "name": "deploy-to-gh-releases",
-  "version": "1.0.6",
+  "version": "1.2.3",
   "description": "Testing a script to deploy to GH releases",
   "main": "index.php",
   "scripts": {
